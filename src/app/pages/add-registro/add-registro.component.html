@@ -2,8 +2,35 @@
     <nb-card-header>Añadir un nuevo Registro</nb-card-header>
     <nb-card-body>
 
+
+        <div mode="buffer" *ngFor="let progress of progressInfo">
+            <span>{{progress.fileName}}</span>
+            <span>{{progress.value}}%</span>
+            <div id="progressbar">
+                <mat-progress-bar mode="determinate" value={{progress.value}}>
+                </mat-progress-bar>
+            </div>
+        </div>
+
+
+        <div id="box2">
+            <button nbButton (click)="fileInput.click()">Seleccionar Archivos</button>
+            <input #fileInput type="file" hidden multiple (change)="selectFiles($event)" />
+            <span *ngIf="fileName">{{fileName}}</span>
+            <button nbButton status="success" *ngIf="selectedFiles" [disabled]="!selectedFiles" (click)="uploadFiles()">
+                <nb-icon icon="cloud-upload-outline">
+                </nb-icon> 
+                    Subir Archivos
+            </button>
+            
+        </div>
+
+        <div id="box3">
+            <span>{{message}}</span>
+        </div>
+
         <div class="row">
-            <nb-select class="col-md-3" [(ngModel)]="registroDato.departamento">Selecciona
+            <nb-select class="col-md-3" placeholder="Departamento" [(ngModel)]="registroDato.departamento" required>
                 <nb-option value="analisis delictivo">Análisis Delictivo</nb-option>
                 <nb-option value="informactica forense">Informática Forense</nb-option>
                 <nb-option value="informacion cibernetica">Información Cibernética</nb-option>
@@ -14,9 +41,10 @@
 
         <div class="row">
             <input type="text" class="col-md-3" nbInput placeholder="Status" [(ngModel)]="registroDato.status">
-            <input type="text" class="col-md-3" nbInput placeholder="NUC" [(ngModel)]="registroDato.nuc">
-            <input type="text" class="col-md-2" nbInput placeholder="Número de Oficio" [(ngModel)]="registroDato.oficio">
-            <nb-select class="col-md-3" [(ngModel)]="registroDato.equipo">
+            <input type="text" class="col-md-3" nbInput placeholder="NUC" [(ngModel)]="registroDato.nuc" required>
+            <input type="text" class="col-md-2" nbInput placeholder="Número de Oficio"
+                [(ngModel)]="registroDato.oficio">
+            <nb-select class="col-md-3" placeholder="Equipo" [(ngModel)]="registroDato.equipo">
                 <nb-option value="computadora">Computadora</nb-option>
                 <nb-option value="laptop">Laptop</nb-option>
                 <nb-option value="celular">Celular</nb-option>
@@ -25,7 +53,7 @@
             </nb-select>
         </div>
         <div class="row">
-            <nb-select class="col-md-3" [(ngModel)]="registroDato.unidad">
+            <nb-select class="col-md-3" placeholder="Unidad" [(ngModel)]="registroDato.unidad">
                 <nb-option value="Unidad Especializada de delitos patrimoniales">Unidad Especializada de
                     delitos patrimoniales</nb-option>
                 <nb-option value="Unidad Especializada de delitos de extorsiones">Unidad Especializada de
@@ -34,30 +62,45 @@
                 </nb-option>
                 <nb-option value="uni0">agregar faltantes</nb-option>
             </nb-select>
-            <nb-select selected="zona" class="col-md-3" [(ngModel)]="registroDato.zona">
+            <nb-select selected="zona" class="col-md-3" placeholder="Zona" [(ngModel)]="registroDato.zona">
                 <nb-option value="Chihuahua">Chihuahua</nb-option>
                 <nb-option value="zon1">agregar faltantes</nb-option>
             </nb-select>
-            <input type="date" class="col-md-3" nbInput placeholder="Fecha del Delito" [(ngModel)]="registroDato.fechaD">
-            <input type="time" class="col-md-1" nbInput placeholder="Hora aprox del delito" [(ngModel)]="registroDato.hora">
+            <input type="text" class="col-md-2" nbInput placeholder="Fecha y hora del delito : " disabled>
+            <input type="date" class="col-md-1" nbInput placeholder="Fecha del Delito"
+                [(ngModel)]="registroDato.fechaD">
+            <input type="time" class="col-md-1" nbInput placeholder="Hora aprox del delito"
+                [(ngModel)]="registroDato.hora">
         </div>
 
         <div class="row">
-            <input type="date" class="col-md-3" nbInput placeholder="Fecha de Recepción" [(ngModel)]="registroDato.fechaR">
-            <input type="text" class="col-md-2" nbInput placeholder="Identificador delito" [(ngModel)]="registroDato.id_del">
-            <input type="text" class="col-md-3" nbInput placeholder="Nombre del delito" [(ngModel)]="registroDato.delito">
-            <input type="text" class="col-md-2" nbInput placeholder="Número de oficio (IF)" [(ngModel)]="registroDato.num_if">
+            <input type="text" class="col-md-2" nbInput placeholder="Fecha de Recepción: " disabled>
+            <input type="date" class="col-md-1" nbInput placeholder="Fecha de Recepción"
+                [(ngModel)]="registroDato.fechaR">
+            <input type="text" class="col-md-2" nbInput placeholder="Identificador delito"
+                [(ngModel)]="registroDato.id_del">
+            <input type="text" class="col-md-3" nbInput placeholder="Nombre del delito"
+                [(ngModel)]="registroDato.delito">
+            <input type="text" class="col-md-2" nbInput placeholder="Número de oficio (IF)"
+                [(ngModel)]="registroDato.num_if">
         </div>
-
         <div class="row">
+            <input type="text" class="col-md-1" nbInput placeholder="Fecha Cont: " disabled>
             <input type="date" class="col-md-2" nbInput placeholder="fechaC">
-            <input type="text" class="col-md-3" nbInput placeholder="Nombre del Lic." [(ngModel)]="registroDato.lic">
-            <input type="text" class="col-md-3" nbInput placeholder="Nombre del Agente" [(ngModel)]="registroDato.agente">
-            <input type="date" class="col-md-2" nbInput placeholder="Fechad de recolección" [(ngModel)]="registroDato.fechaRecol">
+            <input type="text" class="col-md-4" nbInput placeholder="Nombre del Lic." [(ngModel)]="registroDato.lic">
+            <input type="text" class="col-md-4" nbInput placeholder="Nombre del Agente"
+                [(ngModel)]="registroDato.agente">
         </div>
         <div class="row">
-            <input type="text" class="col-md-7" nbInput placeholder="Dirección" [(ngModel)]="registroDato.dir">
-            <input type="text" class="col-md-3" nbInput placeholder="Evidencia entregada" [(ngModel)]="registroDato.evidencia">
+            <input type="text" class="col-md-2" nbInput placeholder="Fecha de recolección: " disabled>
+            <input type="date" class="col-md-2" nbInput placeholder="Fechad de recolección"
+                [(ngModel)]="registroDato.fechaRecol">
+            <input type="text" class="col-md-3" nbInput placeholder="Evidencia entregada"
+                [(ngModel)]="registroDato.evidencia">
+        </div>
+        <div class="row">
+            <input type="text" class="col-md-8" nbInput fullWidth placeholder="Dirección"
+                [(ngModel)]="registroDato.dir">
         </div>
 
 
@@ -71,7 +114,8 @@
         <div [hidden]="showMoreInfo">
             <div class="row">
                 <input type="text" class="col-md-2" nbInput placeholder="Banco" [(ngModel)]="registroDato.banco">
-                <input type="text" class="col-md-2" nbInput placeholder="Marca del Equipo" [(ngModel)]="registroDato.marcaEqui">
+                <input type="text" class="col-md-2" nbInput placeholder="Marca del Equipo"
+                    [(ngModel)]="registroDato.marcaEqui">
                 <input type="text" class="col-md-3" nbInput placeholder="Modelo del Equipo"
                     [(ngModel)]="registroDato.modeloEqui">
                 <input type="text" class="clas-md-3" nbInput placeholder="Número de Serie del Equipo"
@@ -105,7 +149,7 @@
     </nb-card-body>
 </nb-card>
 <nb-card-footer>
-    <button nbButton (click)="saveNuevoRegistro()">
+    <button nbButton (click)="validarCamposVacios()">
         Guardar
     </button>
 </nb-card-footer>

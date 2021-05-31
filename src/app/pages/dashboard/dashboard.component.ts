@@ -39,7 +39,7 @@ export class DashboardComponent implements OnInit {
         cancelButtonContent: '<i class="nb-close"></i>',
     },
     delete: {
-        deleteButtonContent: '<i class="nb-trash"></i>',
+        deleteButtonContent: '<i class="nb-list"></i>',
         confirmDelete: true,
     },
     actions: {
@@ -89,6 +89,8 @@ export class DashboardComponent implements OnInit {
     this.router.navigateByUrl(`pages/registro/${event.data._id}`);
   }
 
- 
+ getTodosCampos(event){
+   this.router.navigateByUrl(`pages/registro/${event.data._id}`);
+ }
 
 }
