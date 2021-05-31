@@ -1,0 +1,124 @@
+<nb-card>
+    <nb-card-header>Añadir un nuevo Registro</nb-card-header>
+    <nb-card-body>
+
+        <div class="row">
+            <nb-select class="col-md-3" [(ngModel)]="registroDato.departamento">Selecciona
+                <nb-option value="analisis delictivo">Análisis Delictivo</nb-option>
+                <nb-option value="informactica forense">Informática Forense</nb-option>
+                <nb-option value="informacion cibernetica">Información Cibernética</nb-option>
+            </nb-select>
+            <input type="text" class="col-md-8" nbInput fullWidth placeholder="Avance"
+                [(ngModel)]="registroDato.avance">
+        </div>
+
+        <div class="row">
+            <input type="text" class="col-md-3" nbInput placeholder="Status" [(ngModel)]="registroDato.status">
+            <input type="text" class="col-md-3" nbInput placeholder="NUC" [(ngModel)]="registroDato.nuc">
+            <input type="text" class="col-md-2" nbInput placeholder="Número de Oficio"
+                [(ngModel)]="registroDato.oficio">
+            <nb-select class="col-md-3" [(ngModel)]="registroDato.equipo">
+                <nb-option value="computadora">Computadora</nb-option>
+                <nb-option value="laptop">Laptop</nb-option>
+                <nb-option value="celular">Celular</nb-option>
+                <nb-option value="tablet">Tablet</nb-option>
+                <nb-option value="otro">Otro</nb-option>
+            </nb-select>
+        </div>
+        <div class="row">
+            <nb-select class="col-md-3" [(ngModel)]="registroDato.unidad">
+                <nb-option value="Unidad Especializada de delitos patrimoniales">Unidad Especializada de
+                    delitos
+                    patrimoniales</nb-option>
+                <nb-option value="Unidad Especializada de delitos de extorsiones">Unidad Especializada de
+                    delitos de
+                    extorsiones</nb-option>
+                <nb-option value="Dirección de inspección interna">Dirección de inspección interna
+                </nb-option>
+                <nb-option value="uni0">agregar faltantes</nb-option>
+            </nb-select>
+            <nb-select selected="zona" class="col-md-3">
+                <nb-option value="Chihuahua">Chihuahua</nb-option>
+                <nb-option value="zon1">agregar faltantes</nb-option>
+            </nb-select>
+            <input type="date" class="col-md-3" nbInput placeholder="Fecha del Delito"
+                [(ngModel)]="registroDato.fechaD">
+            <input type="time" class="col-md-1" nbInput placeholder="Hora aprox del delito"
+                [(ngModel)]="registroDato.hora">
+        </div>
+
+        <div class="row">
+            <input type="date" class="col-md-3" nbInput placeholder="Fecha de Recepción"
+                [(ngModel)]="registroDato.fechaR">
+            <input type="text" class="col-md-2" nbInput placeholder="Identificador delito"
+                [(ngModel)]="registroDato.id_del">
+            <input type="text" class="col-md-3" nbInput placeholder="Nombre del delito"
+                [(ngModel)]="registroDato.delito">
+            <input type="text" class="col-md-2" nbInput placeholder="Número de oficio (IF)"
+                [(ngModel)]="registroDato.num_if">
+        </div>
+
+        <div class="row">
+            <input type="date" class="col-md-2" nbInput placeholder="fechaC">
+            <input type="text" class="col-md-3" nbInput placeholder="Nombre del Lic." [(ngModel)]="registroDato.lic">
+            <input type="text" class="col-md-3" nbInput placeholder="Nombre del Agente"
+                [(ngModel)]="registroDato.agente">
+            <input type="date" class="col-md-2" nbInput placeholder="Fechad de recolección"
+                [(ngModel)]="registroDato.fechaRecol">
+        </div>
+        <div class="row">
+            <input type="text" class="col-md-7" nbInput placeholder="Dirección" [(ngModel)]="registroDato.dir">
+            <input type="text" class="col-md-3" nbInput placeholder="Evidencia entregada"
+                [(ngModel)]="registroDato.evidencia">
+        </div>
+
+
+        <!--Ocultar seccion -->
+
+        <button type="button" class="btn btn-outline-primary" (click)="changeStatusShowMoreInfo()">
+            Mostrar información para analistas
+        </button>
+
+
+        <div [hidden]="showMoreInfo">
+            <div class="row">
+                <input type="text" class="col-md-2" nbInput placeholder="Banco" [(ngModel)]="registroDato.banco">
+                <input type="text" class="col-md-2" nbInput placeholder="Marca del Equipo"
+                    [(ngModel)]="registroDato.marcaEqui">
+                <input type="text" class="col-md-3" nbInput placeholder="Modelo del Equipo"
+                    [(ngModel)]="registroDato.modeloEqui">
+                <input type="text" class="clas-md-3" nbInput placeholder="Número de Serie del Equipo"
+                    [(ngModel)]="registroDato.serieEqui">
+            </div>
+
+            <div class="row">
+                <input type="text" class="clas-md-3" nbInput placeholder="Marca del almacenamiento"
+                    [(ngModel)]="registroDato.marcaAlma">
+                <input type="text" class="clas-md-3" nbInput placeholder="Modelo del almacenamiento"
+                    [(ngModel)]="registroDato.modeloAlma">
+                <input type="text" class="col-md-4" nbInput placeholder="Número de serie del almacenamiento"
+                    [(ngModel)]="registroDato.serieAlma">
+            </div>
+
+            <div class="row">
+                <input type="text" class="col-md-3" nbInput placeholder="MD5" [(ngModel)]="registroDato.md5">
+                <input type="text" class="col-md-3" nbInput placeholder="SHA1" [(ngModel)]="registroDato.sha1">
+                <input type="text" class="col-md-3" nbInput placeholder="Software creador de imagén"
+                    [(ngModel)]="registroDato.swImagen">
+            </div>
+
+            <div class="row">
+                <input type="text" class="col-md-4" nbInput placeholder="Software artefactos"
+                    [(ngModel)]="registroDato.swArte">
+                <input type="text" class="col-md-3" nbInput placeholder="Software información"
+                    [(ngModel)]="registroDato.swInfo">
+            </div>
+        </div>
+
+    </nb-card-body>
+</nb-card>
+<nb-card-footer>
+    <button nbButton (click)="saveNuevoRegistro()">
+        Guardar
+    </button>
+</nb-card-footer>
