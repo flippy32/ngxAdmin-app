@@ -15,8 +15,7 @@
         <div class="row">
             <input type="text" class="col-md-3" nbInput placeholder="Status" [(ngModel)]="registroDato.status">
             <input type="text" class="col-md-3" nbInput placeholder="NUC" [(ngModel)]="registroDato.nuc">
-            <input type="text" class="col-md-2" nbInput placeholder="Número de Oficio"
-                [(ngModel)]="registroDato.oficio">
+            <input type="text" class="col-md-2" nbInput placeholder="Número de Oficio" [(ngModel)]="registroDato.oficio">
             <nb-select class="col-md-3" [(ngModel)]="registroDato.equipo">
                 <nb-option value="computadora">Computadora</nb-option>
                 <nb-option value="laptop">Laptop</nb-option>
@@ -37,39 +36,30 @@
                 </nb-option>
                 <nb-option value="uni0">agregar faltantes</nb-option>
             </nb-select>
-            <nb-select selected="zona" class="col-md-3">
+            <nb-select selected="zona" class="col-md-3" [(ngModel)]="registroDato.zona">
                 <nb-option value="Chihuahua">Chihuahua</nb-option>
                 <nb-option value="zon1">agregar faltantes</nb-option>
             </nb-select>
-            <input type="date" class="col-md-3" nbInput placeholder="Fecha del Delito"
-                [(ngModel)]="registroDato.fechaD">
-            <input type="time" class="col-md-1" nbInput placeholder="Hora aprox del delito"
-                [(ngModel)]="registroDato.hora">
+            <input type="date" class="col-md-3" nbInput placeholder="Fecha del Delito" [(ngModel)]="registroDato.fechaD">
+            <input type="time" class="col-md-1" nbInput placeholder="Hora aprox del delito" [(ngModel)]="registroDato.hora">
         </div>
 
         <div class="row">
-            <input type="date" class="col-md-3" nbInput placeholder="Fecha de Recepción"
-                [(ngModel)]="registroDato.fechaR">
-            <input type="text" class="col-md-2" nbInput placeholder="Identificador delito"
-                [(ngModel)]="registroDato.id_del">
-            <input type="text" class="col-md-3" nbInput placeholder="Nombre del delito"
-                [(ngModel)]="registroDato.delito">
-            <input type="text" class="col-md-2" nbInput placeholder="Número de oficio (IF)"
-                [(ngModel)]="registroDato.num_if">
+            <input type="date" class="col-md-3" nbInput placeholder="Fecha de Recepción" [(ngModel)]="registroDato.fechaR">
+            <input type="text" class="col-md-2" nbInput placeholder="Identificador delito" [(ngModel)]="registroDato.id_del">
+            <input type="text" class="col-md-3" nbInput placeholder="Nombre del delito" [(ngModel)]="registroDato.delito">
+            <input type="text" class="col-md-2" nbInput placeholder="Número de oficio (IF)" [(ngModel)]="registroDato.num_if">
         </div>
 
         <div class="row">
             <input type="date" class="col-md-2" nbInput placeholder="fechaC">
             <input type="text" class="col-md-3" nbInput placeholder="Nombre del Lic." [(ngModel)]="registroDato.lic">
-            <input type="text" class="col-md-3" nbInput placeholder="Nombre del Agente"
-                [(ngModel)]="registroDato.agente">
-            <input type="date" class="col-md-2" nbInput placeholder="Fechad de recolección"
-                [(ngModel)]="registroDato.fechaRecol">
+            <input type="text" class="col-md-3" nbInput placeholder="Nombre del Agente" [(ngModel)]="registroDato.agente">
+            <input type="date" class="col-md-2" nbInput placeholder="Fechad de recolección" [(ngModel)]="registroDato.fechaRecol">
         </div>
         <div class="row">
             <input type="text" class="col-md-7" nbInput placeholder="Dirección" [(ngModel)]="registroDato.dir">
-            <input type="text" class="col-md-3" nbInput placeholder="Evidencia entregada"
-                [(ngModel)]="registroDato.evidencia">
+            <input type="text" class="col-md-3" nbInput placeholder="Evidencia entregada" [(ngModel)]="registroDato.evidencia">
         </div>
 
 
@@ -83,8 +73,7 @@
         <div [hidden]="showMoreInfo">
             <div class="row">
                 <input type="text" class="col-md-2" nbInput placeholder="Banco" [(ngModel)]="registroDato.banco">
-                <input type="text" class="col-md-2" nbInput placeholder="Marca del Equipo"
-                    [(ngModel)]="registroDato.marcaEqui">
+                <input type="text" class="col-md-2" nbInput placeholder="Marca del Equipo" [(ngModel)]="registroDato.marcaEqui">
                 <input type="text" class="col-md-3" nbInput placeholder="Modelo del Equipo"
                     [(ngModel)]="registroDato.modeloEqui">
                 <input type="text" class="clas-md-3" nbInput placeholder="Número de Serie del Equipo"

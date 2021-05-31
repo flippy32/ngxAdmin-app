@@ -9,7 +9,8 @@ export const MENU_ITEMS: NbMenuItem[] = [
   },
   {
     title: 'Añadir Registro',
-    link: '/pages/add-registro',
+    link: '/pages/registro/new',
+    icon: 'file-add-outline'
   },
   {
     title: 'FEATURES',

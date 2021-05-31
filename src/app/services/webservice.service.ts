@@ -24,6 +24,14 @@ export class WebserviceService {
   saveNuevoRegistro(body){
     return this.http.post(this.URL_API,body);
   }
+
+  getRegistroPorId(idRegistro) {
+    return this.http.get(`${this.URL_API}/${idRegistro}`);
+  }
+
+  putRegistroPorId(idRegistro, body) {
+    return this.http.put(`${this.URL_API}/${idRegistro}`, body);
+  }
 };
 
 

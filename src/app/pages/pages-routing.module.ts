@@ -14,7 +14,7 @@ const routes: Routes = [{
       component: DashboardComponent,
     },
     {
-      path: 'add-registro',
+      path: 'registro/:_id',
       component: AddRegistroComponent,
     },
     {
