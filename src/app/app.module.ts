@@ -27,8 +27,9 @@ import {
   NbWindowModule,
 } from '@nebular/theme';
 
+
 @NgModule({
-  declarations: [AppComponent],
+  declarations: [AppComponent, ],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,

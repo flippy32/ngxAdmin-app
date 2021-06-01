@@ -28,28 +28,28 @@ export class DashboardComponent implements OnInit {
     },
     mode: 'external',
     add: {
-        addButtonContent: '<i class="nb-plus"></i>',
-        createButtonContent: '<i class="nb-checkmark"></i>',
-        cancelButtonContent: '<i class="nb-close"></i>',
-        confirmCreate: 'true',
+      addButtonContent: '<i class="nb-plus"></i>',
+      createButtonContent: '<i class="nb-checkmark"></i>',
+      cancelButtonContent: '<i class="nb-close"></i>',
+      confirmCreate: 'true',
     },
-    edit:{
-        editButtonContent: '<i class="nb-edit"></i>',
-        saveButtonContent: '<i class="nb-checkmark"></i>',
-        cancelButtonContent: '<i class="nb-close"></i>',
+    edit: {
+      editButtonContent: '<i class="nb-edit"></i>',
+      saveButtonContent: '<i class="nb-checkmark"></i>',
+      cancelButtonContent: '<i class="nb-close"></i>',
     },
     delete: {
-        deleteButtonContent: '<i class="nb-list"></i>',
-        confirmDelete: true,
+      deleteButtonContent: '<i class="nb-list"></i>',
+      confirmDelete: false,
     },
     actions: {
-        position: 'right',
-        columnTitle: 'Acciones',
+      position: 'right',
+      columnTitle: 'Acciones',
     },
     noDataMessage: 'No se han encontrado datos',
     pager: {
-        display: true,
-        perPage: 15,
+      display: true,
+      perPage: 15,
     }
   };
   //public source;
@@ -89,8 +89,8 @@ export class DashboardComponent implements OnInit {
     this.router.navigateByUrl(`pages/registro/${event.data._id}`);
   }
 
- getTodosCampos(event){
-   this.router.navigateByUrl(`pages/registro/${event.data._id}`);
- }
+  getTodosCampos(event) {
+    this.router.navigateByUrl(`pages/registro/${event.data._id}`);
+  }
 
 }

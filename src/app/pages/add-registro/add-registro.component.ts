@@ -5,6 +5,7 @@ import { WebserviceService } from "../../services/webservice.service";
 
 import { HttpEventType, HttpResponse } from "@angular/common/http";
 import { Observable } from "rxjs";
+
 @Component({
   selector: "ngx-add-registro",
   templateUrl: "./add-registro.component.html",

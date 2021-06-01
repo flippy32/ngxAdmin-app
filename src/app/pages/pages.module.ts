@@ -14,12 +14,12 @@ import { AddRegistroModule } from './add-registro/add-registro.module';
     ThemeModule,
     NbMenuModule,
     DashboardModule,
-   AddRegistroModule,
-  
+    AddRegistroModule,
+
   ],
   declarations: [
     PagesComponent,
-    
+
   ],
 })
 export class PagesModule {
