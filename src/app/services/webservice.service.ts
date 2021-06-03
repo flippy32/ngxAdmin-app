@@ -39,14 +39,19 @@ export class WebserviceService {
   
   //Enviar archivos al endpoint /upload
   upload(file: File): Observable<HttpEvent<any>>{
+    try {
+      console.log("enviar archivos al endpoint, webSerivice")
     const formData: FormData = new FormData();
     formData.append('files', file);
 
-    const req = new HttpRequest('POST', `${this.URL_API}/upload`, formData, {
+    const req = new HttpRequest('POST', `${this.URL_API}/files`, formData, {
       reportProgress: true,
       responseType: 'json'
     });
     return this.http.request(req);
+    } catch (error) {
+      console.log(error)
+    }
   }
 
   //Metodo para obtener los archivos

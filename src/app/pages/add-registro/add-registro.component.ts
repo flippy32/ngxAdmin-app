@@ -126,7 +126,7 @@ export class AddRegistroComponent implements OnInit {
     }
 
 
-    saveNuevoRegistro() {
+  saveNuevoRegistro() {
       if (this.editRegistroDato) {
         // acutalizar
         this.webService
@@ -171,9 +171,11 @@ export class AddRegistroComponent implements OnInit {
     }
 
     upload(index, file) {
+      console.log("metodo upload")
       this.progressInfo[index] = { value: 0, fileName: file.name };
       this.webService.upload(file).subscribe(
         event => {
+          console.log(event)
           if (event.type === HttpEventType.UploadProgress) {
             this.progressInfo[index].value = Math.round(100 * event.loaded / event.total)
           } else if (event instanceof HttpResponse) {
