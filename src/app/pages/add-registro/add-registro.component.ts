@@ -187,5 +187,4 @@ export class AddRegistroComponent implements OnInit {
           this.message = 'No fue posible enviar el archivo ' + file.name;
         });
     }
-
   }

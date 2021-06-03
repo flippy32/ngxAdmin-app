@@ -12,6 +12,7 @@ export const MENU_ITEMS: NbMenuItem[] = [
     link: '/pages/registro/new',
     icon: 'file-add-outline'
   },
+  
   {
     title: 'FEATURES',
     group: true,
