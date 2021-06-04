@@ -5,7 +5,7 @@ import { PagesComponent } from './pages.component';
 import { DashboardModule } from './dashboard/dashboard.module';
 import { PagesRoutingModule } from './pages-routing.module';
 import { AddRegistroModule } from './add-registro/add-registro.module';
-
+import {FormsModule} from '@angular/forms'
 
 
 @NgModule({
@@ -15,6 +15,7 @@ import { AddRegistroModule } from './add-registro/add-registro.module';
     NbMenuModule,
     DashboardModule,
     AddRegistroModule,
+    FormsModule,
 
   ],
   declarations: [

@@ -67,11 +67,9 @@
                 <nb-option value="Chihuahua">Chihuahua</nb-option>
                 <nb-option value="zon1">agregar faltantes</nb-option>
             </nb-select>
-            <input type="text" class="col-md-2" nbInput placeholder="Fecha y hora del delito : " disabled>
-            <input type="date" class="col-md-1" nbInput placeholder="Fecha del Delito"
-                [(ngModel)]="registroDato.fechaD">
-            <input type="time" class="col-md-1" nbInput placeholder="Hora aprox del delito"
-                [(ngModel)]="registroDato.hora">
+            <input type="text" class="col-md-2" nbInput  placeholder="Fecha y hora del delito : " disabled>
+            <input type="text" class="col-md-2" nbInput  placeholder="DD-MM-AA" pattern="^[0-9]{2}-[0-9]{2}-[0-9]{4}" maxlength="10" [(ngModel)]="registroDato.fechaD">
+            <input type="time" class="col-md-1" nbInput placeholder="Hora aprox del delito" [(ngModel)]="registroDato.hora">
         </div>
 
         <div class="row">
@@ -87,7 +85,7 @@
         </div>
         <div class="row">
             <input type="text" class="col-md-1" nbInput placeholder="Fecha Cont: " disabled>
-            <input type="date" class="col-md-2" nbInput placeholder="fechaC">
+            <input type="date" class="col-md-2" nbInput placeholder="fechaC" [(ngModel)]="registroDato.fechaC">
             <input type="text" class="col-md-4" nbInput placeholder="Nombre del Lic." [(ngModel)]="registroDato.lic">
             <input type="text" class="col-md-4" nbInput placeholder="Nombre del Agente"
                 [(ngModel)]="registroDato.agente">
