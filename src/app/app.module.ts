@@ -26,11 +26,12 @@ import {
   NbToastrModule,
   NbWindowModule,
 } from '@nebular/theme';
+import { DialogUploadFilesComponent } from './components/dialog-upload-files/dialog-upload-files.component';
 
 
 
 @NgModule({
-  declarations: [AppComponent, 
+  declarations: [AppComponent, DialogUploadFilesComponent, 
     ],
   imports: [
     BrowserModule,
@@ -55,6 +56,9 @@ import {
       messageGoogleMapKey: 'AIzaSyA_wNuCzia92MAmdLRzmqitRGvCF7wCZPY',
     }),
     CoreModule.forRoot(),
+  ],
+  entryComponents: [
+    DialogUploadFilesComponent
   ],
   bootstrap: [AppComponent],
 })

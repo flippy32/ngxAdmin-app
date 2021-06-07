@@ -5,6 +5,8 @@ import { WebserviceService } from "../../services/webservice.service";
 
 import { HttpEventType, HttpResponse } from "@angular/common/http";
 import { Observable } from "rxjs";
+import { DialogUploadFilesComponent } from "../../components/dialog-upload-files/dialog-upload-files.component";
+import { NbDialogService } from "@nebular/theme";
 
 @Component({
   selector: "ngx-add-registro",
@@ -25,7 +27,8 @@ export class AddRegistroComponent implements OnInit {
   constructor(
     private webService: WebserviceService,
     private activatedRoute: ActivatedRoute,
-    private router: Router
+    private router: Router, 
+    private dialogService: NbDialogService,
   ) { }
 
   ngOnInit(): void {
@@ -187,4 +190,14 @@ export class AddRegistroComponent implements OnInit {
           this.message = 'No fue posible enviar el archivo ' + file.name;
         });
     }
+
+    openDialogAddFiles() {
+      this.dialogService.open(DialogUploadFilesComponent)
+      .onClose.subscribe(resp => {
+        this.getFiles();
+      });
+    }
+  getFiles() {
+    throw new Error("Method not implemented.");
+  }
   }

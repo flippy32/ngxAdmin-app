@@ -14,7 +14,7 @@
 
 
         <div id="box2">
-            <button nbButton (click)="fileInput.click()">Seleccionar Archivos</button>
+            <button nbButton (click)="openDialogAddFiles()">Seleccionar Archivos</button>
             <input #fileInput type="file" hidden multiple (change)="selectFiles($event)" />
             <span *ngIf="fileName">{{fileName}}</span>
             <button nbButton status="success" *ngIf="selectedFiles" [disabled]="!selectedFiles" (click)="uploadFiles()">
@@ -74,7 +74,7 @@
 
         <div class="row">
             <input type="text" class="col-md-2" nbInput placeholder="Fecha de Recepción: " disabled>
-            <input type="date" class="col-md-1" nbInput placeholder="Fecha de Recepción"
+            <input type="text" class="col-md-2" nbInput placeholder="DD-MM-AA" pattern="^[0-9]{2}-[0-9]{2}-[0-9]{4}" maxlength="10"
                 [(ngModel)]="registroDato.fechaR">
             <input type="text" class="col-md-2" nbInput placeholder="Identificador delito"
                 [(ngModel)]="registroDato.id_del">
@@ -85,14 +85,14 @@
         </div>
         <div class="row">
             <input type="text" class="col-md-1" nbInput placeholder="Fecha Cont: " disabled>
-            <input type="date" class="col-md-2" nbInput placeholder="fechaC" [(ngModel)]="registroDato.fechaC">
+            <input type="text" class="col-md-2" nbInput placeholder="DD-MM-AA" pattern="^[0-9]{2}-[0-9]{2}-[0-9]{4}" maxlength="10"[(ngModel)]="registroDato.fechaC">
             <input type="text" class="col-md-4" nbInput placeholder="Nombre del Lic." [(ngModel)]="registroDato.lic">
             <input type="text" class="col-md-4" nbInput placeholder="Nombre del Agente"
                 [(ngModel)]="registroDato.agente">
         </div>
         <div class="row">
             <input type="text" class="col-md-2" nbInput placeholder="Fecha de recolección: " disabled>
-            <input type="date" class="col-md-2" nbInput placeholder="Fechad de recolección"
+            <input type="text" class="col-md-2" nbInput placeholder="DD-MM-AA" pattern="^[0-9]{2}-[0-9]{2}-[0-9]{4}" maxlength="10"
                 [(ngModel)]="registroDato.fechaRecol">
             <input type="text" class="col-md-3" nbInput placeholder="Evidencia entregada"
                 [(ngModel)]="registroDato.evidencia">

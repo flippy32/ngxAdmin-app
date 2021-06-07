@@ -38,8 +38,14 @@ export class WebserviceService {
   //Servicios necesarios para añadir archivos
   
   //Enviar archivos al endpoint /upload
-  upload(file: File): Observable<HttpEvent<any>>{
-    try {
+  upload(body){
+    console.log(body);
+    return this.http.post(`${this.URL_API}/files`,body, {
+      reportProgress: true,
+      observe: 'events'
+    }
+      );
+    /*try {
       console.log("enviar archivos al endpoint, webSerivice")
     const formData: FormData = new FormData();
     formData.append('files', file);
@@ -51,7 +57,7 @@ export class WebserviceService {
     return this.http.request(req);
     } catch (error) {
       console.log(error)
-    }
+    }*/
   }
 
   //Metodo para obtener los archivos

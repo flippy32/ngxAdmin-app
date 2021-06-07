@@ -1,0 +1,39 @@
+<div class="card">
+    <div class="card-header">
+      <h4>Agregar archivos</h4>
+    </div>
+    <div class="card-body">
+      <div class="row mb-3">
+        <div class="col-12">
+          <div class="input-group">
+            <div class="custom-file">
+              <form action="" method="post" enctype="multipart/form-data">
+                <input type="hidden" name="token" value="">
+                <input (change)="onFileChange($event)" type="file" name="file" multiple class="custom-file-input"
+                  id="input-custom-file" accept="{{typeFiles}}/*" >
+                  <!-- accept="{{typeFiles}}/*" -->
+                <label id="chooseFile" class="custom-file-label" for="input-custom-file">Elige un archivo</label>
+              </form>
+            </div>
+            <div class="input-group-prepend">
+              <button (click)="uploadFilesM()" class="btn btn-success btn-block">Subir</button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div id="rowFilesToUpload" *ngIf="filesToUpload.length > 0" class="overflow-auto">
+        <div *ngFor="let fileToUpload of filesToUpload" class="row mb-2">
+          <div class="col-md-6" *ngIf=" fileToUpload.progress > 0 && fileToUpload.file.name.length > 25"> {{ fileToUpload.file.name | slice:0:25}}...{{fileToUpload.file.name | slice:-4}}</div>
+          <div class="col-md-6" *ngIf=" fileToUpload.progress > 0 && fileToUpload.file.name.length <= 25"> {{ fileToUpload.file.name}}</div>
+          <div class="col-md-6" *ngIf="fileToUpload.progress > 0">
+            <nb-progress-bar *ngIf="!fileToUpload.error" [value]="fileToUpload.progress" status="info" size="giant" [displayValue]="true"></nb-progress-bar>
+            <span *ngIf="fileToUpload.error" style="color: red">Error al subir este archivo.</span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="card-footer d-flex justify-content-end">
+      <button class="btn btn-danger" (click)="cancel()">Cancel</button>
+    </div>
+  </div>
+  
