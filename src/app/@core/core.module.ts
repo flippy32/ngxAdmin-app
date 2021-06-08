@@ -1,6 +1,6 @@
 import { ModuleWithProviders, NgModule, Optional, SkipSelf } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { NbAuthModule, NbDummyAuthStrategy } from '@nebular/auth';
+import { NbAuthJWTToken, NbAuthModule, NbDummyAuthStrategy, NbPasswordAuthStrategy } from '@nebular/auth';
 import { NbSecurityModule, NbRoleProvider } from '@nebular/security';
 import { of as observableOf } from 'rxjs';
 
@@ -12,6 +12,7 @@ import {
 import { UserData } from './data/users';
 import { UserService } from './mock/users.service';
 import { MockDataModule } from './mock/mock-data.module';
+import { environment } from '../../environments/environment';
 
 const socialLinks = [
   {
@@ -48,11 +49,59 @@ export const NB_CORE_PROVIDERS = [
   ...NbAuthModule.forRoot({
 
     strategies: [
-      NbDummyAuthStrategy.setup({
+      NbPasswordAuthStrategy.setup({
         name: 'email',
-        delay: 3000,
+        token: {
+          key: 'token',
+          class: NbAuthJWTToken
+        },
+        //baseEndpoint: environment.URL_SERVICIOS,
+        login: {
+          endpoint: '/auth/login',
+          method: 'post',
+          redirect: {
+            success: '/pages',
+          },
+          defaultErrors: ['Algo salió mal. Por favor vuelva a intertarlo más tarde.'],
+          defaultMessages: ['Has iniciado sesión correctamente']
+        },
+        logout: {
+          endpoint: '/auth/logout',
+          redirect: {
+            success: '/'
+          }
+        },
+        register: {
+          endpoint: '/auth/register',
+          method: 'post',
+          redirect: {
+            success: '/'
+          },
+          defaultErrors: ['Algo salió mal. Por favor vuelva a intertarlo más tarde.'],
+          defaultMessages: ['¡Registro exitoso!']
+        },
+        requestPass: {
+          endpoint: '/auth/request-pass',
+          method: 'post',
+          redirect: {
+            success: '/auth/reset-password'
+          },
+          defaultErrors: ['Algo salió mal. Por favor vuelva a intertarlo más tarde.'],
+          defaultMessages: ['Se ha enviado el correo, favor de revisar tu bandeja de entrada']
+        },
+        resetPass: {
+          endpoint: '/auth/reset-pass',
+          method: 'post',
+          redirect: {
+            success: '/'
+          },
+          defaultErrors: ['Algo salió mal. Por favor vuelva a intertarlo más tarde.'],
+        },
       }),
     ],
+
+
+
     forms: {
       login: {
         socialLinks: socialLinks,

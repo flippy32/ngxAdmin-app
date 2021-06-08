@@ -15,19 +15,19 @@ export const routes: Routes = [
         children: [
             {
                 path: 'login',
-                component: xLoginComponent
+                component: xLoginComponent,
             },
             {
                 path: 'logout',
-                component: xLogoutComponent
+                component: xLogoutComponent,
             },
             {
                 path: 'register',
-                component: xRegisterComponent
+                component: xRegisterComponent,
             },
             {
                 path: 'request-password',
-                component: xRequestPasswordComponent
+                component: xRequestPasswordComponent,
             },
             {
                 path: 'reset-password/:token',
@@ -41,4 +41,6 @@ export const routes: Routes = [
     imports: [RouterModule.forChild(routes)],
     exports: [RouterModule],
 })
-export class AuthRoutingModule {}
+export class AuthRoutingModule {
+
+}

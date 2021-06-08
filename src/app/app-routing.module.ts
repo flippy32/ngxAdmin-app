@@ -1,5 +1,6 @@
 import { ExtraOptions, RouterModule, Routes } from '@angular/router';
 import { NgModule } from '@angular/core';
+
 import {
   NbAuthComponent,
   NbLoginComponent,
@@ -9,10 +10,12 @@ import {
   NbResetPasswordComponent,
 } from '@nebular/auth';
 import { TheadFormRowComponent } from 'ng2-smart-table/lib/components/thead/rows/thead-form-row.component';
+import { AuthGuard } from './auth-guard.service';
 
 export const routes: Routes = [
   {
     path: 'pages',
+    canActivate: [AuthGuard], //Verificar el acceso con AuthGuard
     loadChildren: () => import('./pages/pages.module')
       .then(m => m.PagesModule),
   },

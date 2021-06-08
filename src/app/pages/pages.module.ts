@@ -6,6 +6,7 @@ import { DashboardModule } from './dashboard/dashboard.module';
 import { PagesRoutingModule } from './pages-routing.module';
 import { AddRegistroModule } from './add-registro/add-registro.module';
 import {FormsModule} from '@angular/forms'
+import { NbAuthJWTToken, NbAuthModule, NbPasswordAuthStrategy } from '@nebular/auth';
 
 
 @NgModule({
@@ -16,6 +17,20 @@ import {FormsModule} from '@angular/forms'
     DashboardModule,
     AddRegistroModule,
     FormsModule,
+    NbAuthModule.forRoot({
+      strategies: [
+        NbPasswordAuthStrategy.setup({
+          name: 'email',
+
+          token: {
+            class: NbAuthJWTToken,
+
+            key: 'token',
+          }
+        }),
+      ],
+      forms: {},
+    }),
 
   ],
   declarations: [

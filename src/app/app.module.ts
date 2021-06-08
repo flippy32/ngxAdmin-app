@@ -16,6 +16,7 @@ import {MatButtonModule} from '@angular/material/button';
 import {MatCardModule} from '@angular/material/card';
 import {MatIconModule} from '@angular/material/icon';
 import {MatGridListModule} from '@angular/material/grid-list';
+import {AuthGuard} from './auth-guard.service'
 
 import {
   NbChatModule,
@@ -27,6 +28,7 @@ import {
   NbWindowModule,
 } from '@nebular/theme';
 import { DialogUploadFilesComponent } from './components/dialog-upload-files/dialog-upload-files.component';
+import { NbAuthJWTToken, NbAuthModule, NbPasswordAuthStrategy } from '@nebular/auth';
 
 
 
@@ -54,9 +56,30 @@ import { DialogUploadFilesComponent } from './components/dialog-upload-files/dia
     NbToastrModule.forRoot(),
     NbChatModule.forRoot({
       messageGoogleMapKey: 'AIzaSyA_wNuCzia92MAmdLRzmqitRGvCF7wCZPY',
+    
+  
     }),
     CoreModule.forRoot(),
+
+    NbAuthModule.forRoot({
+      strategies: [
+        NbPasswordAuthStrategy.setup({
+          name: 'email',
+
+          token: {
+            class: NbAuthJWTToken,
+
+            key: 'token',
+          }
+        }),
+      ],
+      forms: {},
+    }),
   ],
+  providers: [
+    AuthGuard,
+  ],
+
   entryComponents: [
     DialogUploadFilesComponent
   ],

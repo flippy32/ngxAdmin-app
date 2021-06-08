@@ -6,18 +6,25 @@ import { LayoutService } from '../../../@core/utils';
 import { map, takeUntil } from 'rxjs/operators';
 import { Subject, Observable } from 'rxjs';
 import { RippleService } from '../../../@core/utils/ripple.service';
+import {NbAuthJWTToken, NbAuthService} from '@nebular/auth'
 
 @Component({
   selector: 'ngx-header',
   styleUrls: ['./header.component.scss'],
   templateUrl: './header.component.html',
+  template: `
+  <nb-layout-header fixed>
+    <nb-user [name]="user?.name" [picture]="user?.picture"></nb-user>
+  </nb-layout-header>
+`
 })
 export class HeaderComponent implements OnInit, OnDestroy {
 
+  
   private destroy$: Subject<void> = new Subject<void>();
   public readonly materialTheme$: Observable<boolean>;
   userPictureOnly: boolean = false;
-  user: any;
+  user: {};
 
   themes = [
     {
@@ -58,12 +65,20 @@ export class HeaderComponent implements OnInit, OnDestroy {
     private layoutService: LayoutService,
     private breakpointService: NbMediaBreakpointsService,
     private rippleService: RippleService,
+    private authService: NbAuthService,
   ) {
     this.materialTheme$ = this.themeService.onThemeChange()
       .pipe(map(theme => {
         const themeName: string = theme?.name || '';
         return themeName.startsWith('material');
       }));
+
+    this.authService.onTokenChange()
+      .subscribe((token: NbAuthJWTToken) => {
+        if ( token.isValid()){
+          this.user = token.getPayload();
+        }
+      });
   }
 
   ngOnInit() {
