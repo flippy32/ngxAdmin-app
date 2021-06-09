@@ -4,6 +4,7 @@ import {HttpClient, HttpRequest, HttpEvent, HttpParams} from '@angular/common/ht
 import {RegistroDato} from '../interfaces/registroDato.interface'
 
 import {Observable} from 'rxjs';
+import { environment } from '../../environments/environment';
 
 
 @Injectable({
@@ -13,26 +14,29 @@ import {Observable} from 'rxjs';
 export class WebserviceService {
   
 
-  URL_API =  'http://localhost:4000/api/datos'
+  //URL_API =  'http://localhost:4000/api/datos'
+  URL_API = '';
 
  datos: RegistroDato[] = []; 
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) {
+    this.URL_API=environment.URL_API;
+   }
 
   getDatosFromAPI(){
-    return this.http.get<RegistroDato[]>(this.URL_API);
+    return this.http.get<RegistroDato[]>(`${this.URL_API}/datos`);
   }
 
   saveNuevoRegistro(body){
-    return this.http.post(this.URL_API,body);
+    return this.http.post(`${this.URL_API}/datos`,body);
   }
 
   getRegistroPorId(idRegistro) {
-    return this.http.get(`${this.URL_API}/${idRegistro}`);
+    return this.http.get(`${this.URL_API}/datos/${idRegistro}`);
   }
 
   putRegistroPorId(idRegistro, body) {
-    return this.http.put(`${this.URL_API}/${idRegistro}`, body);
+    return this.http.put(`${this.URL_API}/datos/${idRegistro}`, body);
   }
 
   //Servicios necesarios para añadir archivos
@@ -40,7 +44,7 @@ export class WebserviceService {
   //Enviar archivos al endpoint /upload
   upload(body){
     console.log(body);
-    return this.http.post(`${this.URL_API}/files`,body, {
+    return this.http.post(`${this.URL_API}/datos/files`,body, {
       reportProgress: true,
       observe: 'events'
     }
@@ -50,7 +54,7 @@ export class WebserviceService {
     const formData: FormData = new FormData();
     formData.append('files', file);
 
-    const req = new HttpRequest('POST', `${this.URL_API}/files`, formData, {
+    const req = new HttpRequest('POST', `${$this.URL_API}/files`, formData, {
       reportProgress: true,
       responseType: 'json'
     });
@@ -62,7 +66,7 @@ export class WebserviceService {
 
   //Metodo para obtener los archivos
   getFiles(){
-    return this.http.get(`${this.URL_API}/files`);
+    return this.http.get(`${this.URL_API}/datos/files`);
   }
 
   

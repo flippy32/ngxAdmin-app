@@ -55,7 +55,7 @@ export const NB_CORE_PROVIDERS = [
           key: 'token',
           class: NbAuthJWTToken
         },
-        //baseEndpoint: environment.URL_SERVICIOS,
+        baseEndpoint: environment.URL_API,
         login: {
           endpoint: '/auth/login',
           method: 'post',
@@ -109,6 +109,9 @@ export const NB_CORE_PROVIDERS = [
       register: {
         socialLinks: socialLinks,
       },
+      logout :{
+        redirectDelay: 0
+      }
     },
   }).providers,
 

@@ -61,20 +61,7 @@ import { NbAuthJWTToken, NbAuthModule, NbPasswordAuthStrategy } from '@nebular/a
     }),
     CoreModule.forRoot(),
 
-    NbAuthModule.forRoot({
-      strategies: [
-        NbPasswordAuthStrategy.setup({
-          name: 'email',
-
-          token: {
-            class: NbAuthJWTToken,
-
-            key: 'token',
-          }
-        }),
-      ],
-      forms: {},
-    }),
+    
   ],
   providers: [
     AuthGuard,

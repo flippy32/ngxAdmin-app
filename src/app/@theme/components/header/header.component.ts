@@ -24,7 +24,7 @@ export class HeaderComponent implements OnInit, OnDestroy {
   private destroy$: Subject<void> = new Subject<void>();
   public readonly materialTheme$: Observable<boolean>;
   userPictureOnly: boolean = false;
-  user: {};
+  user: any = {};
 
   themes = [
     {
@@ -55,7 +55,7 @@ export class HeaderComponent implements OnInit, OnDestroy {
 
   currentTheme = 'default';
 
-  userMenu = [ { title: 'Profile' }, { title: 'Log out' } ];
+  userMenu = [ { title: 'Profile' }, { title: 'Log out', link: 'auth/logout' }  ];
 
   public constructor(
     private sidebarService: NbSidebarService,
@@ -77,6 +77,7 @@ export class HeaderComponent implements OnInit, OnDestroy {
       .subscribe((token: NbAuthJWTToken) => {
         if ( token.isValid()){
           this.user = token.getPayload();
+          localStorage.setItem('idUser', this.user.id);
         }
       });
   }
