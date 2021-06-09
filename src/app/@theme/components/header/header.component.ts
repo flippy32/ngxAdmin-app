@@ -14,7 +14,7 @@ import {NbAuthJWTToken, NbAuthService} from '@nebular/auth'
   templateUrl: './header.component.html',
   template: `
   <nb-layout-header fixed>
-    <nb-user [name]="user?.name" [picture]="user?.picture"></nb-user>
+    <nb-user [name]="user?.username" [picture]="user?.picture"></nb-user>
   </nb-layout-header>
 `
 })
@@ -25,7 +25,7 @@ export class HeaderComponent implements OnInit, OnDestroy {
   public readonly materialTheme$: Observable<boolean>;
   userPictureOnly: boolean = false;
   user: any = {};
-
+/*
   themes = [
     {
       value: 'default',
@@ -52,6 +52,7 @@ export class HeaderComponent implements OnInit, OnDestroy {
       name: 'Material Dark',
     },
   ];
+  */
 
   currentTheme = 'default';
 
