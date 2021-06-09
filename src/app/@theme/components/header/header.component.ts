@@ -12,11 +12,11 @@ import {NbAuthJWTToken, NbAuthService} from '@nebular/auth'
   selector: 'ngx-header',
   styleUrls: ['./header.component.scss'],
   templateUrl: './header.component.html',
-  template: `
+  /*template: `
   <nb-layout-header fixed>
     <nb-user [name]="user?.username" [picture]="user?.picture"></nb-user>
   </nb-layout-header>
-`
+`*/
 })
 export class HeaderComponent implements OnInit, OnDestroy {
 
@@ -25,34 +25,6 @@ export class HeaderComponent implements OnInit, OnDestroy {
   public readonly materialTheme$: Observable<boolean>;
   userPictureOnly: boolean = false;
   user: any = {};
-/*
-  themes = [
-    {
-      value: 'default',
-      name: 'Light',
-    },
-    {
-      value: 'dark',
-      name: 'Dark',
-    },
-    {
-      value: 'cosmic',
-      name: 'Cosmic',
-    },
-    {
-      value: 'corporate',
-      name: 'Corporate',
-    },
-    {
-      value: 'material-light',
-      name: 'Material Light',
-    },
-    {
-      value: 'material-dark',
-      name: 'Material Dark',
-    },
-  ];
-  */
 
   currentTheme = 'default';
 
