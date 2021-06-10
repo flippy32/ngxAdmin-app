@@ -151,6 +151,7 @@ export class AddRegistroComponent implements OnInit {
         this.webService.saveNuevoRegistro(this.registroDato).subscribe((res) => {
           alert("El registro se guardó correctamente")
           console.log(res);
+          //renderizar a dashboard al terminar proceso
         });
       }
     }

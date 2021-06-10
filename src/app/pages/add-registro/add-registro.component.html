@@ -3,32 +3,6 @@
     <nb-card-body>
 
 
-        <div mode="buffer" *ngFor="let progress of progressInfo">
-            <span>{{progress.fileName}}</span>
-            <span>{{progress.value}}%</span>
-            <div id="progressbar">
-                <mat-progress-bar mode="determinate" value={{progress.value}}>
-                </mat-progress-bar>
-            </div>
-        </div>
-
-
-        <div id="box2">
-            <button nbButton (click)="openDialogAddFiles()">Seleccionar Archivos</button>
-            <input #fileInput type="file" hidden multiple (change)="selectFiles($event)" />
-            <span *ngIf="fileName">{{fileName}}</span>
-            <button nbButton status="success" *ngIf="selectedFiles" [disabled]="!selectedFiles" (click)="uploadFiles()">
-                <nb-icon icon="cloud-upload-outline">
-                </nb-icon> 
-                    Subir Archivos
-            </button>
-            
-        </div>
-
-        <div id="box3">
-            <span>{{message}}</span>
-        </div>
-
         <div class="row">
             <nb-select class="col-md-3" placeholder="Departamento" [(ngModel)]="registroDato.departamento" required>
                 <nb-option value="analisis delictivo">Análisis Delictivo</nb-option>
@@ -38,7 +12,6 @@
             <input type="text" class="col-md-8" nbInput fullWidth placeholder="Avance"
                 [(ngModel)]="registroDato.avance">
         </div>
-       
         
         <div class="row">
             <input type="text" class="col-md-3" nbInput placeholder="Status" [(ngModel)]="registroDato.status">
@@ -68,13 +41,13 @@
                 <nb-option value="zon1">agregar faltantes</nb-option>
             </nb-select>
             <input type="text" class="col-md-2" nbInput  placeholder="Fecha y hora del delito : " disabled>
-            <input type="text" class="col-md-2" nbInput  placeholder="DD-MM-AA" pattern="^[0-9]{2}-[0-9]{2}-[0-9]{4}" maxlength="10" [(ngModel)]="registroDato.fechaD">
+            <input type="text" class="col-md-2" nbInput  placeholder="DD-MM-AA" pattern="^[0-9]{2}-[0-9]{2}-[0-9]{2}" maxlength="8" [(ngModel)]="registroDato.fechaD">
             <input type="time" class="col-md-1" nbInput placeholder="Hora aprox del delito" [(ngModel)]="registroDato.hora">
         </div>
 
         <div class="row">
             <input type="text" class="col-md-2" nbInput placeholder="Fecha de Recepción: " disabled>
-            <input type="text" class="col-md-2" nbInput placeholder="DD-MM-AA" pattern="^[0-9]{2}-[0-9]{2}-[0-9]{4}" maxlength="10"
+            <input type="text" class="col-md-2" nbInput placeholder="DD-MM-AA" pattern="^[0-9]{2}-[0-9]{2}-[0-9]{2}" maxlength="8"
                 [(ngModel)]="registroDato.fechaR">
             <input type="text" class="col-md-2" nbInput placeholder="Identificador delito"
                 [(ngModel)]="registroDato.id_del">
@@ -85,14 +58,14 @@
         </div>
         <div class="row">
             <input type="text" class="col-md-1" nbInput placeholder="Fecha Cont: " disabled>
-            <input type="text" class="col-md-2" nbInput placeholder="DD-MM-AA" pattern="^[0-9]{2}-[0-9]{2}-[0-9]{4}" maxlength="10"[(ngModel)]="registroDato.fechaC">
+            <input type="text" class="col-md-2" nbInput placeholder="DD-MM-AA" pattern="^[0-9]{2}-[0-9]{2}-[0-9]{2}" maxlength="8"[(ngModel)]="registroDato.fechaC">
             <input type="text" class="col-md-4" nbInput placeholder="Nombre del Lic." [(ngModel)]="registroDato.lic">
             <input type="text" class="col-md-4" nbInput placeholder="Nombre del Agente"
                 [(ngModel)]="registroDato.agente">
         </div>
         <div class="row">
             <input type="text" class="col-md-2" nbInput placeholder="Fecha de recolección: " disabled>
-            <input type="text" class="col-md-2" nbInput placeholder="DD-MM-AA" pattern="^[0-9]{2}-[0-9]{2}-[0-9]{4}" maxlength="10"
+            <input type="text" class="col-md-2" nbInput placeholder="DD-MM-AA" pattern="^[0-9]{2}-[0-9]{2}-[0-9]{2}" maxlength="8"
                 [(ngModel)]="registroDato.fechaRecol">
             <input type="text" class="col-md-3" nbInput placeholder="Evidencia entregada"
                 [(ngModel)]="registroDato.evidencia">
@@ -143,6 +116,32 @@
                 <input type="text" class="col-md-3" nbInput placeholder="Software información"
                     [(ngModel)]="registroDato.swInfo">
             </div>
+        </div>
+
+        <div mode="buffer" *ngFor="let progress of progressInfo">
+            <span>{{progress.fileName}}</span>
+            <span>{{progress.value}}%</span>
+            <div id="progressbar">
+                <mat-progress-bar mode="determinate" value={{progress.value}}>
+                </mat-progress-bar>
+            </div>
+        </div>
+
+
+        <div id="box2">
+            <button nbButton (click)="openDialogAddFiles()">Seleccionar Archivos</button>
+            <input #fileInput type="file" hidden multiple (change)="selectFiles($event)" />
+            <span *ngIf="fileName">{{fileName}}</span>
+            <button nbButton status="success" *ngIf="selectedFiles" [disabled]="!selectedFiles" (click)="uploadFiles()">
+                <nb-icon icon="cloud-upload-outline">
+                </nb-icon> 
+                    Subir Archivos
+            </button>
+            
+        </div>
+
+        <div id="box3">
+            <span>{{message}}</span>
         </div>
 
     </nb-card-body>

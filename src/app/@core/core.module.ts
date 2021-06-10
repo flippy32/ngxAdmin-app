@@ -62,14 +62,16 @@ export const NB_CORE_PROVIDERS = [
           redirect: {
             success: '/pages',
           },
-          defaultErrors: ['Algo salió mal. Por favor vuelva a intertarlo más tarde.'],
+          defaultErrors: ['Algo salió mal. Por favor verifica tu email y contraseña.'],
           defaultMessages: ['Has iniciado sesión correctamente']
         },
         logout: {
           endpoint: '/auth/logout',
           redirect: {
             success: '/'
-          }
+          },
+          // defaultErrors: ['Algo salió mal. Por favor vuelva a intertarlo más tarde.'],
+          // defaultMessages: ['Bye Bye']
         },
         register: {
           endpoint: '/auth/register',
