@@ -13,24 +13,13 @@ import { UserData } from './data/users';
 import { UserService } from './mock/users.service';
 import { MockDataModule } from './mock/mock-data.module';
 import { environment } from '../../environments/environment';
+import { isNull } from 'util';
 
-const socialLinks = [
-  {
-    url: 'https://github.com/akveo/nebular',
-    target: '_blank',
-    icon: 'github',
-  },
-  {
-    url: 'https://www.facebook.com/akveo/',
-    target: '_blank',
-    icon: 'facebook',
-  },
-  {
-    url: 'https://twitter.com/akveo_inc',
-    target: '_blank',
-    icon: 'twitter',
-  },
-];
+//provicional
+let settings = JSON.parse(localStorage.getItem('settings-ip'));
+if (isNull(settings)) settings = { ip: '192.168.1.1', port: '3000' };
+console.log('setting on Core.module ', settings);
+
 
 const DATA_SERVICES = [
   { provide: UserData, useClass: UserService },
@@ -70,8 +59,8 @@ export const NB_CORE_PROVIDERS = [
           redirect: {
             success: '/'
           },
-          // defaultErrors: ['Algo salió mal. Por favor vuelva a intertarlo más tarde.'],
-          // defaultMessages: ['Bye Bye']
+          defaultErrors: ['Algo salió mal. Por favor vuelva a intertarlo más tarde.'],
+          defaultMessages: ['Bye Bye']
         },
         register: {
           endpoint: '/auth/register',
@@ -106,14 +95,26 @@ export const NB_CORE_PROVIDERS = [
 
     forms: {
       login: {
-        socialLinks: socialLinks,
+        redirectDelay: 100,
+        showMessages: {
+          success: true,
+          error: true
+        }
       },
       register: {
-        socialLinks: socialLinks,
+        redirectDelay: 100,
+        showMessages: {
+          success: true,
+          error: true
+        }
       },
       logout :{
-        redirectDelay: 0
-      }
+        redirectDelay: 0,
+        showMessages: {
+          success: true,
+          error: true
+        }
+      },
     },
   }).providers,
 

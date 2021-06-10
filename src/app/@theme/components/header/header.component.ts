@@ -12,11 +12,6 @@ import {NbAuthJWTToken, NbAuthService} from '@nebular/auth'
   selector: 'ngx-header',
   styleUrls: ['./header.component.scss'],
   templateUrl: './header.component.html',
-  /*template: `
-  <nb-layout-header fixed>
-    <nb-user [name]="user?.username" [picture]="user?.picture"></nb-user>
-  </nb-layout-header>
-`*/
 })
 export class HeaderComponent implements OnInit, OnDestroy {
 
@@ -40,11 +35,6 @@ export class HeaderComponent implements OnInit, OnDestroy {
     private rippleService: RippleService,
     private authService: NbAuthService,
   ) {
-    this.materialTheme$ = this.themeService.onThemeChange()
-      .pipe(map(theme => {
-        const themeName: string = theme?.name || '';
-        return themeName.startsWith('material');
-      }));
 
     this.authService.onTokenChange()
       .subscribe((token: NbAuthJWTToken) => {
@@ -53,6 +43,13 @@ export class HeaderComponent implements OnInit, OnDestroy {
           localStorage.setItem('idUser', this.user.id);
         }
       });
+    
+    /*this.materialTheme$ = this.themeService.onThemeChange()
+      .pipe(map(theme => {
+        const themeName: string = theme?.name || '';
+        return themeName.startsWith('material');
+      }));*/
+    
   }
 
   ngOnInit() {
